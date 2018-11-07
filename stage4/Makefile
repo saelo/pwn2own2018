@@ -1,0 +1,7 @@
+CC = clang
+CFLAGS += -I../libspc
+LIB = $(wildcard ../libspc/*.c)
+
+
+ssudo: ssudo.c $(LIB)
+	$(CC) $(CFLAGS) -o ssudo $(LIB) ssudo.c
